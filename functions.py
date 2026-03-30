@@ -1,7 +1,11 @@
+#Print all list
 def ShowStudents(students):
-    for i, e in enumerate(students):
-        print(f"{e['ID']}. Name: {e['Name']}. Age: {e['Age']} Program: {e['Program']}. State: {e['State']}.")
-
+    if students == {}:
+        print("Not have data yet")
+    else:
+        for i, e in enumerate(students):
+            print(f"ID: {e['ID']}. Name: {e['Name']}. Age: {e['Age']} Program: {e['Program']}. State: {e['State']}.")
+#Just for options
 def Option(option):
     try:
         option = int(input("""       Hi!, Welcome.
@@ -13,12 +17,19 @@ def Option(option):
 5. Remove student.
 0. Exit
 Write the option you choose: """))
+#If press return don't crash the code
     except ValueError:
         print("Escoge una opción válida")
         Option(option)
     return option
-
-def AddStudent(students, id):
+#add student for the list
+def addToStudent(students, id, name, age, program, state):
+    id += 1
+    students.append({"ID":id, "Name":name, "Age":age, "Program":program, "State":state})
+    print("Student added succesfully!")
+    return students, id
+#inputs of the student the first time
+def AddStudent():
     name = input("Put the name of the student.").lstrip().lower()
     program = input("Put the program of the student.").lstrip().lower()
     state = ""
@@ -37,48 +48,59 @@ def AddStudent(students, id):
             print("Write a valid number.")
             if age <= 0:
                 print("Write a valid number.")
-    id += 1  
-    students.append({"ID":id, "Name":name, "Age":age, "Program":program, "State":state})
-    print("Student added succesfully!")
-    return students, id
-
-def SearchStudent(students):
-    Looking_for = 0
-    while Looking_for < 3 and Looking_for < 1:
+    return name, age, program, state
+#inputs for the update function
+def AddNewStudent():
+    program = input("Put the new program of the student.").lstrip().lower()
+    state = ""
+    age = 0
+    while state != "active" or state != "inactive":
+        state = input("Which is the state of the student (Active/Inactive)").lstrip().lower()
+        if state == "active" or state == "inactive":
+            break
+        else:
+            print("Invalid input, please write if the student are inactive or active.")
+        
+    while age <= 0:
+        try:
+            age = int(input("Write the new age of the student."))
+        except ValueError:
+            print("Write a valid number.")
+            if age <= 0:
+                print("Write a valid number.")
+    return age, program, state
+#search the student
+def search_student(students, s_option):
+    while s_option == 0:
+            #No error for input string
             try:
-                Looking_for = int(input("How do you like to search student.\n1. ID\n2. Name\n3. Exit."))
+                s_option = int(input("Write if you want search by:\n1. ID\n2. Name"))
             except ValueError:
                 print("Write a valid number.")
-                if Looking_for > 3 and Looking_for < 1:
-                    print("Write a valid number.")
-            if Looking_for == 1:
-                try:
-                    ID_Looking = int(input("Number of ID for the student."))
-                    result = next((item for item in students if item.get("ID") == ID_Looking), "The student has not yet been created.")
-                    print(result)
-                    return result
-                except ValueError:
-                    print("Write a valid number.")
-                except IndexError:
-                    print("The student has not yet been created.")
-                    
-            elif Looking_for == 2:
-                name_looking = ""
-                    
-                while name_looking == "":
-                    try:
-                        name_looking = input("Write the name of the student to search.").lstrip().lower()
-                        result = next((item for item in students if item.get("Name") == name_looking), "The student has not yet been created.")
-                        print(result)
-                        return result
-                    except IndexError:
-                        print("The student has not yet been created.")
-            elif Looking_for == 3:
-                break
-                
-def UpdateStudents(students):
-    return_ = SearchStudent(students)
-    n_age = input()
-    n_program = input()
-    n_state = input()
-    
+    if s_option == 1:
+        l_id = int(input("Write the id that you wanna search"))
+        for e in students:
+            if e["ID"] == l_id:
+                return e
+        
+    if s_option == 2:
+        l_name = input("Write the name that you wanna search")
+        for e in students:
+            if e["Name"].lower() == l_name.lower():
+                return e
+    return None
+#Update the student using search function
+def update_student(students, s_option, name, new_age=None, new_program=None, new_state=None):
+    e = search_student(students, s_option)
+    if e:
+        if new_age is not None: e["Age"] = int(new_age)
+        if new_program is not None: e["Program"] = new_program
+        if new_state is not None: e["State"] = new_state
+        print(f"Estudiante '{name}' actualizado.")
+        return True
+    return False
+#remove student with remove function
+def remove_student(students, s_option):
+    e = search_student(students, s_option)
+    students.remove(e)
+    print(f"remove succesfully")
