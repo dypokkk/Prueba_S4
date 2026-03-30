@@ -3,7 +3,8 @@ def ShowStudents(students):
         print(f"{e['ID']}. Name: {e['Name']}. Age: {e['Age']} Program: {e['Program']}. State: {e['State']}.")
 
 def Option(option):
-    option = int(input("""       Hi!, Welcome.
+    try:
+        option = int(input("""       Hi!, Welcome.
 ¿what do you like to do today?
 1. Add student.
 2. Show student list.
@@ -12,6 +13,9 @@ def Option(option):
 5. Remove student.
 0. Exit
 Write the option you choose: """))
+    except ValueError:
+        print("Escoge una opción válida")
+        Option(option)
     return option
 
 def AddStudent(students, id):
@@ -37,3 +41,44 @@ def AddStudent(students, id):
     students.append({"ID":id, "Name":name, "Age":age, "Program":program, "State":state})
     print("Student added succesfully!")
     return students, id
+
+def SearchStudent(students):
+    Looking_for = 0
+    while Looking_for < 3 and Looking_for < 1:
+            try:
+                Looking_for = int(input("How do you like to search student.\n1. ID\n2. Name\n3. Exit."))
+            except ValueError:
+                print("Write a valid number.")
+                if Looking_for > 3 and Looking_for < 1:
+                    print("Write a valid number.")
+            if Looking_for == 1:
+                try:
+                    ID_Looking = int(input("Number of ID for the student."))
+                    result = next((item for item in students if item.get("ID") == ID_Looking), "The student has not yet been created.")
+                    print(result)
+                    return result
+                except ValueError:
+                    print("Write a valid number.")
+                except IndexError:
+                    print("The student has not yet been created.")
+                    
+            elif Looking_for == 2:
+                name_looking = ""
+                    
+                while name_looking == "":
+                    try:
+                        name_looking = input("Write the name of the student to search.").lstrip().lower()
+                        result = next((item for item in students if item.get("Name") == name_looking), "The student has not yet been created.")
+                        print(result)
+                        return result
+                    except IndexError:
+                        print("The student has not yet been created.")
+            elif Looking_for == 3:
+                break
+                
+def UpdateStudents(students):
+    return_ = SearchStudent(students)
+    n_age = input()
+    n_program = input()
+    n_state = input()
+    
