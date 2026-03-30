@@ -1,63 +1,65 @@
-# Sistema de Gestión de Inventario en Python
+# Inventory Management System in Python
 
-## Descripción
+## Description
 
-Este proyecto es un **sistema de gestión de estudiantes en consola**
-desarrollado en Python.\
-Permite administrar estudiantes mediante un menú interactivo que facilita
-operaciones básicas como:
+This project is a **console-based student management system** developed in Python.
+It allows you to manage students through an interactive menu that facilitates basic operations such as:
 
--   Agregar estudiantes
--   Mostrarlos
--   Buscar estudiantes
--   Actualizar información
--   Eliminar estudiantes
+- Adding students
+- Displaying students
+- Searching for students
+- Updating information
+- Deleting students
 
-El sistema utiliza **listas, diccionarios, funciones y manejo de errores** para crear una pequeña aplicación funcional de
-gestión de datos.
+The system uses **lists, dictionaries, functions, and error handling** to create a small, functional data management application.
 
 ------------------------------------------------------------------------
 
-# Características principales
+# Main Features
 
-## Gestión de productos
+## Product Management
 
-El programa permite:
+The program allows you to:
 
--   Añadir estudiantes con **nombre, edad, programa y estado**
--   Mostrar todos los estudiantes en formato de tabla
--   Buscar estudiantes por nombre o id
--   Actualizar cualquier dato del estudiante
--   Eliminar estudiantes del sistema
-
-------------------------------------------------------------------------
-
-# Estructura del proyecto
-
-El proyecto está organizado en módulos para mantener el código limpio y
-reutilizable.
-
-    project/
-    │
-    ├── main.py          # Programa principal con el menú interactivo
-    ├── functions.py     # Funciones para manipular el inventario
-    └── README.md        # Documentación del proyecto
+- Add students with **name, age, program, and status**
+- Display all students in a table format
+- Search for students by name or ID
+- Update any student data
+- Delete students from the system
 
 ------------------------------------------------------------------------
 
-# Requisitos
+# Project Structure
 
--   Python **3.8 o superior**
+The project is organized into modules to keep the code clean and reusable.
 
-No se requieren librerías externas.
+project/
+
+│
+
+├── main.py # Main program with interactive menu
+
+├── functions.py # Functions for managing inventory
+
+└── README.md # Project documentation
 
 ------------------------------------------------------------------------
 
-# Cómo ejecutar el programa
+# Requirements
 
-1.  Clona o descarga el proyecto.
-2.  Abre una terminal en la carpeta del proyecto.
-3.  Ejecuta:
+- Python **3.8 or higher**
+
+No external libraries are required.
+
+------------------------------------------------------------------------
+
+# How to run the program
+
+1. Clone or download the project.
+
+2. Open a terminal in the project folder.
+
+3. Run:
 
 ``` bash
 python main.py
@@ -65,60 +67,67 @@ python main.py
 
 ------------------------------------------------------------------------
 
-# Menú del sistema
+# System Menu
 
-Al ejecutar el programa aparecerá el siguiente menú:
+When you run the program, the following menu will appear:
 
-           Hi!, Welcome.
-¿what do you like to do today?
-    1. Add student.
-    2. Show student list.
-    3. Search student.
-    4. Update student.
-    5. Remove student.
-    0. Exit
+Hi!, Welcome.
 
-Cada opción permite realizar una acción específica sobre los estudiantes.
+What would you like to do today?
 
-------------------------------------------------------------------------
+1. Add student.
 
-# Manejo de errores
+2. Show student list.
 
-El programa incluye validación para:
+3. Search student.
 
--   Valores negativos
--   Entradas incorrectas del usuario
+4. Update student.
 
-Esto evita que el programa se cierre inesperadamente.
+5. Remove student.
+
+0. Exit
+
+Each option allows you to perform a specific action on the students.
 
 ------------------------------------------------------------------------
 
-# Conceptos de Python utilizados
+# Error Handling
 
-Este proyecto demuestra el uso de:
+The program includes validation for:
 
--   Funciones
--   Listas y diccionarios
--   Expresiones lambda
--   Generadores
--   Manejo de errores (`try / except`)
--   Organización modular del código
+- Negative values
+- Incorrect user input
+
+This prevents the program from closing unexpectedly.
 
 ------------------------------------------------------------------------
 
-# Posibles mejoras futuras
+# Python Concepts Used
 
-Algunas mejoras que se podrían implementar:
+This project demonstrates the use of:
 
--   Interfaz gráfica (Tkinter o PyQt)
--   Base de datos (SQLite o MySQL)
--   Control de usuarios
--   Historial de movimientos de inventario
--   Exportación a Excel
+- Functions
+- Lists and dictionaries
+- Lambda expressions
+- Generators
+- Error handling (`try / except`)
+- Modular code organization
 
 ------------------------------------------------------------------------
 
-# Autor
+# Possible Future Improvements
+
+Some improvements that could be implemented:
+
+- Graphical interface (Tkinter or PyQt)
+- Database (SQLite or MySQL)
+- User control
+- Inventory movement history
+- Export to Excel
+
+------------------------------------------------------------------------
+
+# Author
 
 Riwi
 **Dylan Gamero**.
